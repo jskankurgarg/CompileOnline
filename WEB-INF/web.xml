@@ -1,0 +1,120 @@
+<web-app>
+	<servlet>
+		<servlet-name>Index</servlet-name>
+		<servlet-class>com.foo.TestIndex</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Index</servlet-name>
+		<url-pattern>/index.tml</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>SendRedirect</servlet-name>
+		<servlet-class>foo.SendRedirect</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SendRedirect</servlet-name>
+		<url-pattern>/SendRedirect.do</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>RDServlet</servlet-name>
+		<servlet-class>foo.RDServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RDServlet</servlet-name>
+		<url-pattern>/RDServlet.do</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>GetJar</servlet-name>
+		<jsp-file>/GetJar.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GetJar</servlet-name>
+		<url-pattern>/GetMejar</url-pattern>
+	</servlet-mapping>
+
+	<context-param>
+		<param-name>breed</param-name>
+		<param-value>purely_indian_breed</param-value>
+	</context-param>
+
+	<error-page>
+			<exception-type>java.io.IOException</exception-type>
+			<exception-type>java.lang.ArithmeticException</exception-type>
+			<error-code>404</error-code>
+			<location>/index.html</location>
+	</error-page>
+	<error-page>
+		<exception-type>java.lang.ArithmeticException</exception-type>
+		<error-code>404</error-code>
+		<location>/index.html</location>
+	</error-page>
+	<error-page>
+		<error-code>404</error-code>
+		<location>/index.html</location>
+	</error-page>
+	<jsp-config>
+		<jsp-property-group>
+			<url-pattern>*.jsp</url-pattern>
+			<url-pattern>*.tag</url-pattern>
+			<el-ignored>
+				false
+			</el-ignored>
+		</jsp-property-group>
+	</jsp-config>
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>test</web-resource-name>
+			<url-pattern>/usetag.jsp</url-pattern>
+			<http-method>GET</http-method>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>Manager</role-name>
+			<role-name>Guest</role-name>
+		</auth-constraint>
+	</security-constraint>
+	<security-role>
+		<role-name>Manager</role-name>
+	</security-role>
+	<security-role>
+		<role-name>Guest</role-name>
+	</security-role>
+	<login-config>
+		<auth-method>BASIC</auth-method>
+	</login-config>
+	<listener>
+		<listener-class>com.MyServletContextListener</listener-class>
+	</listener>
+	<listener>
+		<listener-class>AttributeListener</listener-class>
+	</listener>
+
+
+
+
+
+  <servlet>
+    <servlet-name>ControllerServlet</servlet-name>
+    <display-name>Controller For Compilation Activities</display-name>
+    <description>Will Handle and delegate control to model and view</description>
+    <servlet-class>com.web.ControllerServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>ControllerServlet</servlet-name>
+    <url-pattern>/servlet/ControllerServlet</url-pattern>
+  </servlet-mapping>
+	<filter>
+		<filter-name>TryItFilter</filter-name>
+		<filter-class>com.web.TryItFilter</filter-class>
+	</filter>
+  <filter-mapping>
+	<filter-name>TryItFilter</filter-name>
+	<url-pattern>/TryIt.jsp</url-pattern>
+  </filter-mapping>
+  <listener>
+	<listener-class>com.web.RequestCounter</listener-class>
+  </listener>
+</web-app>

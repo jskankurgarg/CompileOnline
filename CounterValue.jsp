@@ -1,0 +1,1 @@
+total active session : <%=com.web.SessionCounter.getActiveSessions()%>

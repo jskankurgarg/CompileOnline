@@ -1,0 +1,5 @@
+<taglib>
+	<tlib-version>1.2</tlib-version>
+	<uri>any</uri>
+	<jsp-version>2.0</jsp-version>
+</taglib>
